@@ -6,6 +6,13 @@ int entryMelody[] = {
 int entryNoteDurations[] = {
     5, 5};
 
+// Melody for leave sound (car left)
+int leaveMelody[] = {
+    NOTE_F5, NOTE_F4};
+int leaveNoteDurations[] = {
+    5, 5};
+
+
 // Melody for stable sound (distance stable)
 int stableMelody[] = {
     NOTE_E4, NOTE_E4, NOTE_E4,                   // Jingle Bells, Jingle Bells
@@ -19,6 +26,7 @@ int stableNoteDurations[] = {
     8, 8, 8, 8,                      // Second part
     4, 4, 8, 8, 8, 8, 4, 8, 8, 8, 4  // Third part
 };
+
 
 // Buzzer pin variable
 int buzzerPin;
@@ -37,6 +45,18 @@ void playEntrySound()
   {
     int noteDuration = 1000 / entryNoteDurations[i];
     tone(buzzerPin, entryMelody[i], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+}
+
+// Play the leave sound
+void playLeaveSound() {
+  int noteCount = sizeof(leaveMelody) / sizeof(leaveMelody[0]);
+  for (int i = 0; i < noteCount; i++) {
+    int noteDuration = 1000 / leaveNoteDurations[i];
+    tone(buzzerPin, leaveMelody[i], noteDuration);
     int pauseBetweenNotes = noteDuration * 1.30;
     delay(pauseBetweenNotes);
     noTone(buzzerPin);

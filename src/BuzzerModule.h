@@ -13,6 +13,7 @@ void initBuzzer(int pin);
 
 // Functions to play different sounds
 void playEntrySound();
+void playLeaveSound();
 void playStableSound();
 void stopBuzzer();
 
