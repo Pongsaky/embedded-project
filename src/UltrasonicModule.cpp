@@ -15,30 +15,32 @@ void initUltrasonicSensors() {
     pinMode(ECHO_PIN_3, INPUT);
 }
 
+const float sound_speed = 0.034; // cm/microseconds
+
 // Generic function to get distance from a sensor
-int getUltrasonicValue(int trigPin, int echoPin) {
+float getUltrasonicValue(int trigPin, int echoPin) {
     digitalWrite(trigPin, LOW);
     delayMicroseconds(2);
     digitalWrite(trigPin, HIGH);
     delayMicroseconds(10);
     digitalWrite(trigPin, LOW);
     
-    long duration = pulseIn(echoPin, HIGH);
-    int distance = duration * 0.034 / 2;
+    long long duration = pulseIn(echoPin, HIGH);
+    float distance = duration * sound_speed / 2.0;
     return distance;
 }
 
 // Function to get distance from Sensor 1
-int getUltrasonic1Value() {
+float getUltrasonic1Value() {
     return getUltrasonicValue(TRIG_PIN_1, ECHO_PIN_1);
 }
 
 // Function to get distance from Sensor 2
-int getUltrasonic2Value() {
+float getUltrasonic2Value() {
     return getUltrasonicValue(TRIG_PIN_2, ECHO_PIN_2);
 }
 
 // Function to get distance from Sensor 3
-int getUltrasonic3Value() {
+float  getUltrasonic3Value() {
     return getUltrasonicValue(TRIG_PIN_3, ECHO_PIN_3);
 }

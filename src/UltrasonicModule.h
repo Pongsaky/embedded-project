@@ -19,8 +19,8 @@
 void initUltrasonicSensors();
 
 // Functions to get distances from each Ultrasonic sensor
-int getUltrasonic1Value();
-int getUltrasonic2Value();
-int getUltrasonic3Value();
+float getUltrasonic1Value();
+float getUltrasonic2Value();
+float getUltrasonic3Value();
 
 #endif // ULTRASONIC_MODULE_H
